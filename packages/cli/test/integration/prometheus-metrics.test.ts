@@ -31,6 +31,8 @@ globalConfig.endpoints.metrics = {
 	includeApiStatusCodeLabel: true,
 	includeQueueMetrics: true,
 	queueMetricsInterval: 20,
+	includeActiveWorkflowCountMetric: true,
+	activeWorkflowCountInterval: 60,
 };
 
 const server = setupTestServer({ endpointGroups: ['metrics'] });
