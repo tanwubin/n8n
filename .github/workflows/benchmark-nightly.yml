@@ -61,6 +61,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Azure login
+        if: false  # 禁用
         uses: azure/login@6c251865b4e6290e7b78be643ea2d005bc51f69a # v2.1.1
         with:
           client-id: ${{ env.ARM_CLIENT_ID }}
@@ -68,14 +69,17 @@ jobs:
           subscription-id: ${{ env.ARM_SUBSCRIPTION_ID }}
 
       - name: Destroy any existing environment
+        if: false  # 禁用
         run: pnpm destroy-cloud-env
         working-directory: packages/@n8n/benchmark
 
       - name: Provision the environment
+        if: false  # 禁用
         run: pnpm provision-cloud-env ${{ env.DEBUG }}
         working-directory: packages/@n8n/benchmark
 
       - name: Run the benchmark
+        if: false  # 禁用
         env:
           BENCHMARK_RESULT_WEBHOOK_URL: ${{ secrets.BENCHMARK_RESULT_WEBHOOK_URL }}
           BENCHMARK_RESULT_WEBHOOK_AUTH_HEADER: ${{ secrets.BENCHMARK_RESULT_WEBHOOK_AUTH_HEADER }}
